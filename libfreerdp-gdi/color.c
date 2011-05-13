@@ -66,7 +66,8 @@ void gdi_set_pixel(uint8* data, int x, int y, int width, int height, int bpp, in
 {
 	int start;
 	int shift;
-	int *dst32;
+	uint16 *dst16;
+	uint32 *dst32;
 
 	if (bpp == 1)
 	{
@@ -78,9 +79,14 @@ void gdi_set_pixel(uint8* data, int x, int y, int width, int height, int bpp, in
 		else
 			data[start] = data[start] & ~(0x80 >> shift);
 	}
-	else if (bpp == 32)
+	else if (bpp == 15 || bpp == 16)
 	{
-		dst32 = (int*) data;
+		dst16 = (uint16*) data;
+		dst16[y * width + x] = pixel;
+	}
+	else if (bpp == 24 || bpp == 32)
+	{
+		dst32 = (uint32*) data;
 		dst32[y * width + x] = pixel;
 	}
 }
