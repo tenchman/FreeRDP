@@ -51,3 +51,22 @@ EXTRA_DIST =
 
 DISTCLEANFILES = 
 
+includedir = $(prefix)/include/freerdp
+include_HEADERS = \
+	color.h \
+	decode.h \
+	gdi_16bpp.h \
+	gdi_32bpp.h \
+	gdi_8bpp.h \
+	gdi_bitmap.h \
+	gdi_brush.h \
+	gdi_clipping.h \
+	gdi_dc.h \
+	gdi_drawing.h \
+	gdi.h \
+	gdi_line.h \
+	gdi_palette.h \
+	gdi_pen.h \
+	gdi_region.h \
+	gdi_shape.h \
+	libgdi.h
