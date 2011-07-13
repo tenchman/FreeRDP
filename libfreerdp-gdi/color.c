@@ -104,15 +104,15 @@ uint32 gdi_color_convert_rgb(uint32 srcColor, int srcBpp, int dstBpp, HCLRCONV c
 		case 32:
 			if (clrconv->alpha)
 			{
-				GetABGR32(alpha, red, green, blue, srcColor);
+				GetARGB32(alpha, red, green, blue, srcColor);
 			}
 			else
 			{
-				GetBGR32(red, green, blue, srcColor);
+				GetRGB32(red, green, blue, srcColor);
 			}
 			break;
 		case 24:
-			GetBGR24(red, green, blue, srcColor);
+			GetRGB24(red, green, blue, srcColor);
 			break;
 		case 16:
 			GetRGB16(red, green, blue, srcColor);
@@ -143,7 +143,7 @@ uint32 gdi_color_convert_rgb(uint32 srcColor, int srcBpp, int dstBpp, HCLRCONV c
 			dstColor = ARGB32(alpha, red, green, blue);
 			break;
 		case 24:
-			dstColor = BGR24(red, green, blue);
+			dstColor = RGB24(red, green, blue);
 			break;
 		case 16:
 			if(clrconv->rgb555)
@@ -188,15 +188,15 @@ uint32 gdi_color_convert_bgr(uint32 srcColor, int srcBpp, int dstBpp, HCLRCONV c
 		case 32:
 			if (clrconv->alpha)
 			{
-				GetABGR32(alpha, red, green, blue, srcColor);
+				GetARGB32(alpha, red, green, blue, srcColor);
 			}
 			else
 			{
-				GetBGR32(red, green, blue, srcColor);
+				GetRGB32(red, green, blue, srcColor);
 			}
 			break;
 		case 24:
-			GetBGR24(red, green, blue, srcColor);
+			GetRGB24(red, green, blue, srcColor);
 			break;
 		case 16:
 			GetRGB16(red, green, blue, srcColor);
@@ -244,9 +244,9 @@ uint32 gdi_color_convert_bgr(uint32 srcColor, int srcBpp, int dstBpp, HCLRCONV c
 			break;
 		case 8:
 			srcColor &= 0xFF;
-			red = clrconv->palette->entries[srcColor].red;
+			blue = clrconv->palette->entries[srcColor].red;
 			green = clrconv->palette->entries[srcColor].green;
-			blue = clrconv->palette->entries[srcColor].blue;
+			red = clrconv->palette->entries[srcColor].blue;
 			break;
 		case 1:
 			if ((red != 0) || (green != 0) || (blue != 0))
