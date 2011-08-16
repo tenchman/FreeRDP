@@ -46,7 +46,10 @@ ui_error(rdpInst * inst, char * format, ...)
 	text1[1023] = 0;
 	snprintf(text2, 1023, "ERROR: %s", text1);
 	text2[1023] = 0;
-	inst->ui_error(inst, text2);
+	if (inst->ui_error)
+	  inst->ui_error(inst, text2);
+	else
+	  write(2, text2, strlen(text2));
 	xfree(text1);
 	xfree(text2);
 }
