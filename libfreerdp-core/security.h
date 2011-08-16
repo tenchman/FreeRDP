@@ -25,6 +25,7 @@ typedef struct rdp_sec rdpSec;
 #include "crypto.h"
 #include <freerdp/utils/debug.h>
 #include <freerdp/constants/constants.h>
+#include "libfreerdp-core/stream.h"
 
 #ifndef DISABLE_TLS
 #include "tls.h"

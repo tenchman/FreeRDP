@@ -107,6 +107,7 @@ network_connect_rdp(rdpNetwork * net)
 	return status;
 }
 
+#ifndef DISABLE_TLS
 RD_BOOL
 network_connect_tls(rdpNetwork * net)
 {
@@ -163,6 +164,7 @@ network_connect_nla(rdpNetwork * net)
 
 	return status;
 }
+#endif
 
 RD_BOOL
 network_connect(rdpNetwork * net, char* server, char* username, int port)
